@@ -2,11 +2,19 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:hdp="http://www.springframework.org/schema/hadoop"
+       xmlns:cloud="http://www.springframework.org/schema/cloud"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
-		http://www.springframework.org/schema/hadoop http://www.springframework.org/schema/hadoop/spring-hadoop.xsd">
+		http://www.springframework.org/schema/hadoop http://www.springframework.org/schema/hadoop/spring-hadoop.xsd
+		http://www.springframework.org/schema/cloud http://www.springframework.org/schema/cloud/spring-cloud.xsd">
 
-	<hdp:configuration id="hadoopConfiguration">
-		fs.defaultFS=${spring.hadoop.fsUri}
-	</hdp:configuration>
+	<beans profile="cloud">
+		<cloud:properties id="cloudProperties"/>
+		<cloud:service id="hadoopConfiguration" service-name="hd-demo" connector-type="org.apache.hadoop.conf.Configuration"/>
+	</beans>
 
+	<beans profile="default">
+		<hdp:configuration id="hadoopConfiguration">
+			fs.defaultFS=${spring.hadoop.fsUri}
+		</hdp:configuration>
+	</beans>
 </beans>

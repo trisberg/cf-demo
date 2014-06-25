@@ -1,4 +1,4 @@
-package org.springdeveloper.demo;
+package com.springdeveloper.demo;
 
 import org.apache.hadoop.fs.FileStatus;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,12 +9,16 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Properties;
 
 @RestController
 public class HdfsController {
 
 	@Autowired
 	private FsShell fsShell;
+
+	@Autowired
+	private Properties cloudProperties;
 
 	@RequestMapping("/ls")
 	public List<FileInfo> ls(@RequestParam(value="path", required=false, defaultValue="/") String path) {
@@ -24,6 +28,11 @@ public class HdfsController {
 			list.add(new FileInfo(path, fs.getPath().getName()));
 		}
 		return list;
+	}
+
+	@RequestMapping("/props")
+	public String props() {
+		return cloudProperties.toString();
 	}
 
 }

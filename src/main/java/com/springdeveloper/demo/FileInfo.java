@@ -1,4 +1,4 @@
-package org.springdeveloper.demo;
+package com.springdeveloper.demo;
 
 public class FileInfo {
 	String path;
