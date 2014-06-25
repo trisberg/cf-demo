@@ -1,4 +1,4 @@
-package org.springframework.data.hadoop.cloud.service.cloudfoundry;
+package org.springframework.data.hadoop.cloud.cloudfoundry;
 
 import org.springframework.cloud.cloudfoundry.CloudFoundryServiceInfoCreator;
 import org.springframework.cloud.cloudfoundry.Tags;
