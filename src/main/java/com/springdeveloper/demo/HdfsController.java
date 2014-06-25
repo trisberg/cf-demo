@@ -29,10 +29,4 @@ public class HdfsController {
 		}
 		return list;
 	}
-
-	@RequestMapping("/props")
-	public String props() {
-		return cloudProperties.toString();
-	}
-
 }

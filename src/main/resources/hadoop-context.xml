@@ -8,7 +8,6 @@
 		http://www.springframework.org/schema/cloud http://www.springframework.org/schema/cloud/spring-cloud.xsd">
 
 	<beans profile="cloud">
-		<cloud:properties id="cloudProperties"/>
 		<cloud:service id="hadoopConfiguration" service-name="hd-demo" connector-type="org.apache.hadoop.conf.Configuration"/>
 	</beans>
 
